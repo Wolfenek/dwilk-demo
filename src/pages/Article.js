@@ -7,7 +7,7 @@ import ZoomImage from "../components/ZoomImage";
 const Article = () => {
   return (
     <>
-    <h2>Hello</h2>
+    <h2>dude</h2>
     <ZoomImage src={classroom} />
     </>
   );

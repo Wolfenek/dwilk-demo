@@ -9,6 +9,8 @@ import Header from "./components/Header";
 // Pages
 import Home from "./pages/Home";
 import Article from "./pages/Article";
+// Context
+import NavContextProvider from "./context/NavContext";
 
 const App = () => {
   return (
@@ -17,17 +19,19 @@ const App = () => {
         render={({ location }) => (
           <>
             <GlobalStyles />
-            <Container>
-              <Header />
-            </Container>
-            <PoseGroup>
-              <RouteContainer key={location.pathname}>
-                <Switch location={location}>
-                  <Route exact path="/" component={Home} key="home" />
-                  <Route path="/article" component={Article} key="article" />
-                </Switch>
-              </RouteContainer>
-            </PoseGroup>
+            <NavContextProvider>
+              <Container>
+                <Header />
+              </Container>
+              <PoseGroup>
+                <RouteContainer key={location.pathname}>
+                  <Switch location={location}>
+                    <Route exact path="/" component={Home} key="home" />
+                    <Route path="/article" component={Article} key="article" />
+                  </Switch>
+                </RouteContainer>
+              </PoseGroup>
+            </NavContextProvider>
           </>
         )}
       />

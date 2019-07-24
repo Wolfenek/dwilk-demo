@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import { IoMdSearch } from "react-icons/io";
+import { IoMdSearch, IoMdShare } from "react-icons/io";
+import { NavContext } from "../context/NavContext";
 
 const Header = () => {
+  const { defaultNav } = useContext(NavContext);
+  console.log(defaultNav);
   return (
     <header>
       <Navbar>
@@ -13,7 +16,7 @@ const Header = () => {
           <HamburgerLine />
         </HamburgerBox>
         <PageTitle>The Fortnightly</PageTitle>
-        <Icon />
+        {defaultNav ? <Icon /> : <Icon2 /> }
       </Navbar>
     </header>
   );
@@ -47,6 +50,11 @@ const HamburgerLine = styled.div`
 `;
 
 const Icon = styled(IoMdSearch)`
+  font-size: 2rem;
+  margin-left: auto;
+`;
+
+const Icon2 = styled(IoMdShare)`
   font-size: 2rem;
   margin-left: auto;
 `;
