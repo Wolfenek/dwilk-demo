@@ -40,7 +40,7 @@ const App = () => {
 };
 
 const RouteContainer = posed.div({
-  enter: { opacity: 1, delay: 150, beforeChildren: true },
+  enter: { opacity: 1, delay: 120, beforeChildren: true },
   exit: { opacity: 0 }
 });
 

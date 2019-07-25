@@ -5,18 +5,17 @@ import { IoMdSearch, IoMdShare } from "react-icons/io";
 import { NavContext } from "../context/NavContext";
 
 const Header = () => {
-  const { defaultNav } = useContext(NavContext);
-  console.log(defaultNav);
+  const { defaultNav, defaultTrue } = useContext(NavContext);
   return (
     <header>
       <Navbar>
-        <HamburgerBox to="/">
+        <HamburgerBox to="/" onClick={defaultTrue}>
           <HamburgerLine />
           <HamburgerLine />
           <HamburgerLine />
         </HamburgerBox>
         <PageTitle>The Fortnightly</PageTitle>
-        {defaultNav ? <Icon /> : <Icon2 /> }
+        {defaultNav ? <Icon /> : <Icon2 />}
       </Navbar>
     </header>
   );

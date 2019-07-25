@@ -5,12 +5,16 @@ export const NavContext = createContext();
 const NavContextProvider = props => {
   const [defaultNav, setDefaultNav] = useState(true);
 
-  const handleDefaultNav = () => {
-    setDefaultNav(!defaultNav);
+  const defaultTrue = () => {
+    setDefaultNav(true);
+  };
+
+  const defaultFalse = () => {
+    setDefaultNav(false);
   };
 
   return (
-    <NavContext.Provider value={{ defaultNav, handleDefaultNav }}>
+    <NavContext.Provider value={{ defaultNav, defaultTrue, defaultFalse }}>
       {props.children}
     </NavContext.Provider>
   );

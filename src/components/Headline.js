@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import trees from "../images/trees.jpg";
+import { NavContext } from "../context/NavContext";
 
 const Headline = () => {
+  const { defaultFalse } = useContext(NavContext);
   return (
     <NewsWrapper>
-      <PieceOfNews>
+      {/* News 1 */}
+      <PieceOfNews style={{ cursor: "pointer" }} onClick={defaultFalse}>
         <StyledLink to="/article">
           <div>
             <NewsTag>US</NewsTag>
@@ -16,10 +19,41 @@ const Headline = () => {
           </div>
         </StyledLink>
       </PieceOfNews>
+      {/* News 2 */}
       <PieceOfNews>
         <div>
           <NewsTag>Politics</NewsTag>
           <NewsHeadline>Divided American Lives During War</NewsHeadline>
+        </div>
+        <Img src={trees} />
+      </PieceOfNews>
+      {/* News 3 */}
+      <PieceOfNews>
+        <div>
+          <NewsTag>World</NewsTag>
+          <NewsHeadline bigger>Climate change</NewsHeadline>
+        </div>
+      </PieceOfNews>
+      {/* News 4 */}
+      <PieceOfNews>
+        <div>
+          <NewsTag>US</NewsTag>
+          <NewsHeadline>lorem ipsum...</NewsHeadline>
+        </div>
+        <Img src={trees} />
+      </PieceOfNews>
+      {/* News 5 */}
+      <PieceOfNews>
+        <div>
+          <NewsTag>Germany</NewsTag>
+          <NewsHeadline bigger>World cup...</NewsHeadline>
+        </div>
+      </PieceOfNews>
+      {/* News 6 */}
+      <PieceOfNews>
+        <div>
+          <NewsTag>US</NewsTag>
+          <NewsHeadline>lorem ipsum...</NewsHeadline>
         </div>
         <Img src={trees} />
       </PieceOfNews>
@@ -36,6 +70,7 @@ const NewsWrapper = styled.div`
   display: block;
   @media (min-width: 768px) {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
   }
 `;
@@ -45,7 +80,7 @@ const PieceOfNews = styled.div`
   align-items: center;
   padding: 1rem 0;
   border-bottom: 1px dotted rgba(153, 204, 255, 0.4);
-  cursor: pointer;
+  /* cursor: pointer; */
   &:last-child {
     border-bottom: none;
   }

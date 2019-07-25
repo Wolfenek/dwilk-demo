@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import posed from "react-pose";
 
-// Child component
-const ZoomImage = ({ ...props }) => {
+const ZoomImage = ({ imgHeight, ...props }) => {
   const [isZoomed, setIsZoomed] = useState(false);
   const pose = isZoomed ? "zoomedIn" : "zoomedOut";
 
@@ -16,10 +15,9 @@ const ZoomImage = ({ ...props }) => {
   };
 
   return (
-    <ArticleImageWrapper
-      onClick={() => (isZoomed ? zoomOut() : zoomIn())}
-      // style={{ maxWidth: MaxImageWidth }}
-    >
+    <ArticleImageWrapper 
+    style={{height: imgHeight}}
+    onClick={() => (isZoomed ? zoomOut() : zoomIn())}>
       <ToggleBackrop pose={pose} />
       <PosedImg
         pose={pose}
@@ -36,13 +34,11 @@ const ZoomImage = ({ ...props }) => {
 };
 
 // Styled & animated files
-
 const ArticleImageWrapper = styled.div`
-  height: calc(100vw) - 48px;
+  /* height: 100%; */
   width: "100%";
-  max-width: 600px;
+  max-width: 550px;
   margin: 0 auto;
-  /* overflow: hidden; */
 `;
 
 const transition = {
@@ -57,21 +53,20 @@ const PosedImg = posed.img({
     left: 0,
     bottom: 0,
     right: 0,
-    flip: true,
-    transition
+    transition,
+    flip: true
   },
   zoomedOut: {
     position: "static",
     width: "auto",
     height: "auto",
-    maxHeight: "60vh",
-    flip: true,
-    transition
+    maxHeight: "65vh",
+    transition,
+    flip: true
   }
 });
 
 // backdrop
-
 const Backdrop = styled.div`
   position: fixed;
   top: 48px;
